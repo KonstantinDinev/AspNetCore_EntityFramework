@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using quiz_backend.Models;
 
 namespace quiz_backend.Controllers
@@ -20,22 +21,33 @@ namespace quiz_backend.Controllers
         }
 
         [HttpPost]
-        public Question Post([FromBody]Question question)
+        public async Task<IActionResult> Post([FromBody]Question question)
         {
             _context.Questions.Add(question);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return new Question { text = "Thanks" };
+            return Ok(question);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody]Models.Question questionData)
+        {
+            //var question = await _context.Questions.SingleOrDefaultAsync(q => q.ID == id);
+            if (id != questionData.ID)
+                return BadRequest();
+
+            _context.Entry(questionData).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(questionData);
         }
 
         // GET api/questions
         [HttpGet]
         public ActionResult<IEnumerable<Question>> Get()
         {
-            return new Question[] {
-                new Models.Question() { text = "first question" },
-                new Models.Question() { text = "2nd question" }
-            };
+            return _context.Questions;
         }
     }
 }

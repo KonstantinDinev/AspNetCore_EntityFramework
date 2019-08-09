@@ -2,18 +2,21 @@ import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 
 @Component({
-    selector: 'question',
-    templateUrl: './question.component.html'
+    selector: 'questions',
+    templateUrl: './questions.component.html'
 })
 
-export class QuestionComponent {
+export class QuestionsComponent {
 
     question = {};
+    questions;
 
     constructor(private api: ApiService) {}
 
     ngOnInit() {
-        this.api.questionSelected.subscribe(question => this.question = question);
+        this.api.getQuestions().subscribe(res => {
+            this.questions = res;
+        });
     }
 
     post(question) {
