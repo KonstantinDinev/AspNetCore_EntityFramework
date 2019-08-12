@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using quiz_backend.Models;
 
 namespace quiz_backend
 {
@@ -15,5 +16,7 @@ namespace quiz_backend
         {
 
         }
+
+        public DbSet<quiz_backend.Models.Quiz> Quiz { get; set; }
     }
 }

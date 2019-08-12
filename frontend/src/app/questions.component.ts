@@ -8,7 +8,6 @@ import { ApiService } from './api.service';
 
 export class QuestionsComponent {
 
-    question = {};
     questions;
 
     constructor(private api: ApiService) {}
@@ -18,8 +17,5 @@ export class QuestionsComponent {
             this.questions = res;
         });
     }
-
-    // post(question) {
-    //     this.api.postQuestion(question);
-    // }
+    
 }
