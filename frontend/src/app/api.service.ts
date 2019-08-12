@@ -22,6 +22,6 @@ export class ApiService {
 
     selectQuestion(question) {
         console.log(question);
-        this.questionSelected = question;
+        this.selectedQuestions.next(question);
     }
 }

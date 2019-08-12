@@ -4,3 +4,7 @@
 .full-width {
     widtH: 100%
 }
+
+.clickLink {
+    cursor: pointer;
+}

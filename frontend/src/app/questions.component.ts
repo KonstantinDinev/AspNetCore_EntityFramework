@@ -19,7 +19,7 @@ export class QuestionsComponent {
         });
     }
 
-    post(question) {
-        this.api.postQuestion(question);
-    }
+    // post(question) {
+    //     this.api.postQuestion(question);
+    // }
 }
