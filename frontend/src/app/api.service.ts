@@ -13,6 +13,10 @@ export class ApiService {
 
     constructor(private http: HttpClient) {}
 
+    getQuestions(quizId) {
+        return this.http.get(`http://localhost:60763/api/questions/${quizId}`);
+    }
+
     postQuestion(question) {
         this.http.post('http://localhost:60763/api/questions', question).subscribe(res => {
             console.log(res);
@@ -23,10 +27,6 @@ export class ApiService {
         this.http.put(`http://localhost:60763/api/questions/${question.id}`, question).subscribe(res => {
             console.log(res);
         });
-    }
-
-    getQuestions() {
-        return this.http.get("http://localhost:60763/api/questions");
     }
 
     getQuizzes() {
