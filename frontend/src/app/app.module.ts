@@ -23,6 +23,7 @@ import { NavComponent } from './nav.component';
 import { QuizComponent } from './quiz.component';
 import { QuizzesComponent } from './quizzes.component';
 import { RegisterComponent } from './register.component';
+import { AuthService } from './auth.service';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -60,7 +61,7 @@ const routes = [
     MatCheckboxModule,
     MatToolbarModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,7 +15,7 @@ namespace quiz_backend.Controllers
         public string Password { get; set; }
     }
 
-
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
