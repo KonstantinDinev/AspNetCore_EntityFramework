@@ -10,7 +10,7 @@ import {
   MatListModule,
   MatToolbarModule
   } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 
@@ -22,13 +22,15 @@ import { HomeComponent } from './home.component';
 import { NavComponent } from './nav.component';
 import { QuizComponent } from './quiz.component';
 import { QuizzesComponent } from './quizzes.component';
+import { RegisterComponent } from './register.component';
 
 const routes = [
   { path: '', component: HomeComponent },
   { path: 'question', component: QuestionComponent },
   { path: 'question/:quizId', component: QuestionComponent },
-  { path: 'questions', component: QuestionsComponent },
-  { path: 'quiz', component: QuizComponent }
+  //{ path: 'questions', component: QuestionsComponent },
+  { path: 'quiz', component: QuizComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const routes = [
     HomeComponent,
     NavComponent,
     QuizComponent,
-    QuizzesComponent
+    QuizzesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ const routes = [
     MatInputModule, 
     MatCardModule,
     FormsModule,
+    ReactiveFormsModule,
     MatListModule,
     MatCheckboxModule,
     MatToolbarModule
