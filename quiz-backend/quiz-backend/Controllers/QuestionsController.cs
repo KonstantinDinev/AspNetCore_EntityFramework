@@ -20,6 +20,19 @@ namespace quiz_backend.Controllers
             this._context = context;
         }
 
+        // GET api/questions
+        [HttpGet]
+        public ActionResult<IEnumerable<Question>> Get()
+        {
+            return _context.Questions;
+        }
+
+        [HttpGet("{quizId}")]
+        public ActionResult<IEnumerable<Question>> Get([FromRoute] int quizId)
+        {
+            return _context.Questions.Where(q => q.QuizId == quizId).ToList();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Question question)
         {
@@ -48,17 +61,5 @@ namespace quiz_backend.Controllers
             return Ok(questionData);
         }
 
-        // GET api/questions
-        [HttpGet]
-        public ActionResult<IEnumerable<Question>> Get()
-        {
-            return _context.Questions;
-        }
-
-        [HttpGet("{quizId}")]
-        public ActionResult<IEnumerable<Question>> Get([FromRoute] int quizId)
-        {
-            return _context.Questions.Where(q => q.QuizId == quizId).ToList();
-        }
     }
 }
