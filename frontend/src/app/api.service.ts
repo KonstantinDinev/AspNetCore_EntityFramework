@@ -33,6 +33,10 @@ export class ApiService {
         return this.http.get("http://localhost:60763/api/quizzes");
     }
 
+    getAllQuizzes() {
+        return this.http.get("http://localhost:60763/api/quizzes/all");
+    }
+
     postQuiz(quiz) {
         this.http.post('http://localhost:60763/api/quizzes', quiz).subscribe(res => {
             console.log(res);
